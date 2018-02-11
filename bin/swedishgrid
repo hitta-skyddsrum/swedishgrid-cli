@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'swedishgrid'
+
+options = {}
+
+OptionParser.new do |parser|
+
+  parser.on("-f rt90,sweref99tm", "--from", "From system type") do |v|
+    options[:from] = v
+  end
+
+  parser.on("-t grid,geodetic", "--to", "To format") do |v|
+    options[:to] = v
+  end
+
+  parser.on("-x N", Float, "x/latitude to parse") do |v|
+    options[:x] = v
+  end
+
+  parser.on("-y N", Float, "y/longitude to parse") do |v|
+    options[:y] = v
+  end
+end.parse!
+
+grid = SwedishGrid.new(:"#{ options[:from] }")
+
+case options[:to]
+when 'geodetic'
+  output = grid.grid_to_geodetic(options[:x], options[:y])
+when 'grid'
+  output = grid.geodetic_to_grid(options[:x], options[:y])
+else
+  raise 'Unknown to parameter'
+end
+
+puts output

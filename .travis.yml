@@ -1,0 +1,12 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.4.0
+
+deploy:
+  provider: rubygems
+  gem: swedishgrid-cli
+  gemspec: swedishgrid-cli.gemspec
+  api_key: "YOUR API KEY"
+  on:
+    tags: true
