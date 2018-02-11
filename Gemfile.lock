@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     icehouse-swedishgrid (0.1.2)
+    rake (12.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   icehouse-swedishgrid (= 0.1.2)!
+  rake!
 
 BUNDLED WITH
    1.16.1
