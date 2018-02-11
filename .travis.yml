@@ -1,12 +1,12 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.0
-
+- 2.4.0
 deploy:
   provider: rubygems
   gem: swedishgrid-cli
   gemspec: swedishgrid-cli.gemspec
-  api_key: "YOUR API KEY"
+  api_key:
+    secure: l9Hv+kFdch0iZ9MzSAWSZdTdUGQd686gLy4edVxHio1mHjX93TUTjg/n+Cqj83HmIVxby+ppA0yQeajZiN6Ivi0othocci2J+hkCGIPpeqROjjlX8kn9Na9Oe1WKUJlyZwH9yx1jhc4GTQqkleIl1tL0Ryl+S3OeDyAe+H+te+eq7zx3CdbsGQt3vv8EN5Fe3Q0c6Cs9eohuSy0haQcbeCNxz9q5HmYmMTDHUmrEf4Ebk9NKOjUwi6jGVUBJ0s62mdryZE0FNwkGOYiPbPT5lzcnwGXhYxouiHTcNv22afRf2ws+5yJVvp/7kCZskq8t8Bb57a8+0SDaJYPe6S5N9CIU4yQacgfnX67momUM7myIxQp3OCyL4+Y1aYjpty1dd7kwDMY4pBN24JgOvk3WZcHaxPgNOnAy5qGQtYMyqcvUHT0XVx4vVnjbvfgMBPIibjZdDZl0jcDa9JhXU4WS6ddWJjpA7TB6L4Q+AMThei/Z7/w08gZdDN4TDcwBsB/CbFAWIaL0r7nU9Mrj4BZ2lH8TIHDoeDKf0lc6qbMyqocZELFby8r9r6/taUIdZdNs686k8uuk41uI/H8FXLLJW00AUfhRLVXTlv43ttRFkE76raR65q+aRdaXnsg2ry8OTv4JmBjy/NLicHugniIGww2H1/7c4YPiYT995zFscuM=
   on:
     tags: true
