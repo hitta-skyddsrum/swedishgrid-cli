@@ -1,12 +1,22 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.4.0
-deploy:
-  provider: rubygems
-  gem: swedishgrid-cli
-  gemspec: swedishgrid-cli.gemspec
-  api_key:
-    secure: l9Hv+kFdch0iZ9MzSAWSZdTdUGQd686gLy4edVxHio1mHjX93TUTjg/n+Cqj83HmIVxby+ppA0yQeajZiN6Ivi0othocci2J+hkCGIPpeqROjjlX8kn9Na9Oe1WKUJlyZwH9yx1jhc4GTQqkleIl1tL0Ryl+S3OeDyAe+H+te+eq7zx3CdbsGQt3vv8EN5Fe3Q0c6Cs9eohuSy0haQcbeCNxz9q5HmYmMTDHUmrEf4Ebk9NKOjUwi6jGVUBJ0s62mdryZE0FNwkGOYiPbPT5lzcnwGXhYxouiHTcNv22afRf2ws+5yJVvp/7kCZskq8t8Bb57a8+0SDaJYPe6S5N9CIU4yQacgfnX67momUM7myIxQp3OCyL4+Y1aYjpty1dd7kwDMY4pBN24JgOvk3WZcHaxPgNOnAy5qGQtYMyqcvUHT0XVx4vVnjbvfgMBPIibjZdDZl0jcDa9JhXU4WS6ddWJjpA7TB6L4Q+AMThei/Z7/w08gZdDN4TDcwBsB/CbFAWIaL0r7nU9Mrj4BZ2lH8TIHDoeDKf0lc6qbMyqocZELFby8r9r6/taUIdZdNs686k8uuk41uI/H8FXLLJW00AUfhRLVXTlv43ttRFkE76raR65q+aRdaXnsg2ry8OTv4JmBjy/NLicHugniIGww2H1/7c4YPiYT995zFscuM=
-  on:
-    tags: true
+- 2.4
+
+env:
+  secure: Xzjhm72VbFnlXl9j705/TTrMudaTAp1VPH7aMR2TypzhDodw0239lBXXSO5ibhxc/LAMFx9miBnUaprJQtO9ytBP0evWI+JFtzQsoGreaYf37bX1uU52Y383yw3cmon5q40/yrVAWVYmqKrkzgUj6LjdWgwVSPMGkypL5YPifbLkKwSyPGtUUFu8Pyc9dkLW8vby5GfuYqTv12AHuwH3A8DXv6GzFyj5aGnQsFuy0SPLesziRcGd362zrq6IRdgnh7FiBVGx0sjtX3XbWzauHrFlLiJ5RF3DqoORxYPowy1LOlyccgEBtB4y5WVE0e048ZH9ey551fz1vF38B6m3JvLcz8VIkVxob+0TZAeAXh2m2pb5atmuG5Jpz9qWvBPCHjCyt7hEagiIVpz5bM8QZu+Xml6mniOvk/mXgOEJXPCxUwVDgE8/pMEs9nkk9mQ/4CYhU9usbwHzo/3Se3GhfojrGd8I+8GqylmU+k3BPphofDN7ccxgEbMY8arQoLy5UdBvSt+HJqaQ73W998A/C6QcX4mPQIpg8J5ep9nPjFzP/ViZz6t+RrSTWVp+xVZylEeDd9LktyjlSprJGdmOgnyaoXYm4n5gg6Y3wj3yeIYy/uzzixDGh4gBtMAWPn+6IVa+ICPn088BcyNQLZaz0W+VKxEbL7CKa6B1YQNnMGQ=
+
+install:
+  # https://github.com/travis-ci/dpl/issues/574
+  - yes y | gem uninstall gems
+  - yes y | gem uninstall dpl
+  - gem install gems -v 0.8.3
+  - gem install dpl -v 1.8.27
+  - bundle install
+
+jobs:
+  include:
+    - stage: deploy
+      if: env(TRAVIS_TAG) IS present
+      rvm: 2.4
+      script: ./scripts/deploy.sh
