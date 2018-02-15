@@ -17,6 +17,6 @@ install:
 jobs:
   include:
     - stage: deploy
-      if: env(TRAVIS_TAG) IS present
+      if: tag IS present
       rvm: 2.4
       script: ./scripts/deploy.sh
