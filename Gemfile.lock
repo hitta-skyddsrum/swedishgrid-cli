@@ -1,15 +1,21 @@
+PATH
+  remote: .
+  specs:
+    swedishgrid-cli (0.0.1)
+      icehouse-swedishgrid (~> 0.1, >= 0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     icehouse-swedishgrid (0.1.2)
-    rake (12.3.0)
+    rake (10.5.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  icehouse-swedishgrid (= 0.1.2)!
-  rake!
+  rake (~> 10.5, >= 10.5.0)
+  swedishgrid-cli!
 
 BUNDLED WITH
    1.16.1
